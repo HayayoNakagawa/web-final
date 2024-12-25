@@ -1,58 +1,105 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import firebase from "firebase/compat/app";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  where,
+  onSnapshot,
+} from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+import "./styles.css"; // 外部CSSをインポート
+import myGames from "./data.json";
 
-// 自分の手持ちゲームのデータ（ローカル）
-const myGames = [
-  {
-    id: 1,
-    name: "ラブレター",
-    shortDescription: "心理戦が熱い短時間カードゲーム",
-    image: "love_letter.jpg",
-    apiId: "129622",
-  },
-  {
-    id: 2,
-    name: "カタン",
-    shortDescription: "資源を集めて開拓する戦略ゲーム",
-    image: "catan.jpg",
-    apiId: "13",
-  },
-  {
-    id: 3,
-    name: "ドミニオン",
-    shortDescription: "デッキ構築型カードゲームの名作",
-    image: "dominion.jpg",
-    apiId: "36218",
-  },
-];
+// Firebase設定
+const firebaseConfig = {
+  apiKey: "AIzaSyB6jJA0Vfr_6vaDuXDxg4ga8Y6x_R_chuo",
+  authDomain: "data-adb47.firebaseapp.com",
+  projectId: "data-adb47",
+  storageBucket: "data-adb47.firebasestorage.app",
+  messagingSenderId: "48373849823",
+  appId: "1:48373849823:web:3577093381a748ffeed36a",
+  measurementId: "G-Q2W48CB4H7",
+};
 
-// APIを使用してゲームの詳細情報を取得
-async function fetchGameDetails(apiId) {
-  const response = await fetch(`https://boardgamegeek.com/xmlapi2/thing?id=${apiId}`);
-  const text = await response.text();
-  const parser = new DOMParser();
-  const xml = parser.parseFromString(text, "text/xml");
-  const item = xml.querySelector("item");
-
-  return {
-    description: item.querySelector("description")?.textContent || "説明がありません",
-    year: item.querySelector("yearpublished")?.getAttribute("value") || "不明",
-    minPlayers: item.querySelector("minplayers")?.getAttribute("value") || "不明",
-    maxPlayers: item.querySelector("maxplayers")?.getAttribute("value") || "不明",
-  };
-}
+// Firebase初期化
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 export default function App() {
-  const [selectedGame, setSelectedGame] = useState(null); // 選択したゲーム
-  const [details, setDetails] = useState(null); // APIで取得した詳細
+  const [selectedGame, setSelectedGame] = useState(null);
+  const [rating, setRating] = useState(0);
+  const [review, setReview] = useState("");
+  const [ratings, setRatings] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // ゲームを選択したときの処理
-  const handleGameClick = async (game) => {
+  useEffect(() => {
+    if (selectedGame) {
+      const q = query(
+        collection(db, "gameRatings"),
+        where("gameId", "==", selectedGame.id)
+      );
+      const unsubscribe = onSnapshot(q, (snapshot) => {
+        const newRatings = snapshot.docs.map((doc) => doc.data());
+        setRatings(newRatings);
+      });
+      return () => unsubscribe();
+    }
+  }, [selectedGame]);
+
+  const calculateAverageRating = () => {
+    if (ratings.length === 0) return 0;
+    const total = ratings.reduce((sum, entry) => sum + entry.rating, 0);
+    return (total / ratings.length).toFixed(1);
+  };
+
+  const handleSaveRating = async () => {
+    if (!selectedGame || rating === 0 || review === "") {
+      alert("評価と感想を入力してください！");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      await addDoc(collection(db, "gameRatings"), {
+        gameId: selectedGame.id,
+        gameName: selectedGame.name,
+        rating,
+        review,
+        timestamp: new Date(),
+      });
+      alert("評価が保存されました！");
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      alert("評価の保存に失敗しました");
+    } finally {
+      setLoading(false);
+      setRating(0);
+      setReview("");
+    }
+  };
+
+  const handleGameClick = (game) => {
     setSelectedGame(game);
-    setLoading(true);
-    const gameDetails = await fetchGameDetails(game.apiId);
-    setDetails(gameDetails);
-    setLoading(false);
+    setRatings([]);
+  };
+
+  const renderStars = (value) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(
+        <span
+          key={i}
+          onClick={() => setRating(i)}
+          className="stars"
+          style={{ color: i <= value ? "gold" : "lightgray" }}
+        >
+          ★
+        </span>
+      );
+    }
+    return stars;
   };
 
   return (
@@ -61,82 +108,55 @@ export default function App() {
         <h1>手持ちのボードゲーム</h1>
       </header>
       <main>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
+        <div className="game-list">
           {myGames.map((game) => (
             <div
               key={game.id}
               onClick={() => handleGameClick(game)}
-              style={{
-                cursor: "pointer",
-                textAlign: "center",
-                border: "1px solid #ccc",
-                padding: "16px",
-                borderRadius: "8px",
-                maxWidth: "150px",
-              }}
+              className="game-card"
             >
-              <img
-                src={`/images/${game.image}`}
-                alt={game.name}
-                style={{ width: "100%" }}
-              />
+              {/* 修正した部分 */}
+              <img src={game.image} alt={game.name} />
               <h3>{game.name}</h3>
               <p>{game.shortDescription}</p>
             </div>
           ))}
         </div>
       </main>
+
       {selectedGame && (
-        <div
-          style={{
-            position: "fixed",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            background: "white",
-            padding: "20px",
-            boxShadow: "0 0 10px rgba(0,0,0,0.5)",
-            zIndex: 1000,
-          }}
-        >
+        <div className="popup">
           <h2>{selectedGame.name}</h2>
-          {loading ? (
-            <p>読み込み中...</p>
-          ) : (
-            details && (
-              <>
-                <p>{details.description}</p>
-                <p>公開年: {details.year}</p>
-                <p>プレイヤー数: {details.minPlayers} - {details.maxPlayers}</p>
-                <button
-                  onClick={() =>
-                    window.open(
-                      `https://boardgamegeek.com/boardgame/${selectedGame.apiId}`,
-                      "_blank"
-                    )
-                  }
-                >
-                  詳細を見る
-                </button>
-              </>
-            )
-          )}
+          <p>{selectedGame.description}</p>
+          <p>平均評価:</p>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            {renderStars(Math.round(calculateAverageRating()))}
+            <span style={{ marginLeft: "10px", fontSize: "1rem", color: "#555" }}>
+              ({calculateAverageRating()})
+            </span>
+          </div>
+          <p>あなたの評価を選択してください:</p>
+          <div style={{ marginBottom: "10px" }}>{renderStars(rating)}</div>
+          <textarea
+            placeholder="感想を入力してください"
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
+            className="textarea"
+          ></textarea>
+          <button onClick={handleSaveRating} disabled={loading}>
+            {loading ? "保存中..." : "評価を保存"}
+          </button>
           <button onClick={() => setSelectedGame(null)}>閉じる</button>
+          <h3>他のプレイヤーの評価:</h3>
+          <ul className="reviews">
+            {ratings.map((entry, index) => (
+              <li key={index}>
+                <p>評価: {entry.rating}★</p>
+                <p>感想: {entry.review}</p>
+              </li>
+            ))}
+          </ul>
         </div>
-      )}
-      {selectedGame && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            background: "rgba(0,0,0,0.5)",
-            zIndex: 999,
-          }}
-          onClick={() => setSelectedGame(null)}
-        ></div>
       )}
     </>
   );

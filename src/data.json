@@ -1,0 +1,199 @@
+[
+  {
+    "id": 0,
+    "name": "インサイダーゲーム",
+    "shortDescription": "クイズ×正体隠匿の心理戦ゲーム",
+    "description": "『インサイダーゲーム』は、知識と直感を駆使してクイズを解く一方で、インサイダーの正体を探り当てる正体隠匿系ゲームです。",
+    "image": "images/insider_game.jpg"
+  },
+  {
+    "id": 2,
+    "name": "カタン",
+    "shortDescription": "資源を集めて開拓する名作ボードゲーム",
+    "description": "『カタン』はプレイヤーが資源を活用して開拓地や都市を建設し、発展を競い合う戦略的なボードゲームです。",
+    "image": "images/catan.jpg"
+  },
+  {
+    "id": 3,
+    "name": "コードネーム",
+    "shortDescription": "チーム戦の連想ゲーム",
+    "description": "『コードネーム』は、言葉の連想力とコミュニケーションを試されるスパイテーマのゲームです。",
+    "image": "images/codenames.jpg"
+  },
+  {
+    "id": 4,
+    "name": "王と道化",
+    "shortDescription": "シンプルだけど奥深い対戦ゲーム",
+    "description": "『王と道化』はカードの効果を駆使して、王を操る戦略が楽しめる2人用対戦ゲームです。",
+    "image": "images/king_and_joker.jpg"
+  },
+  {
+    "id": 5,
+    "name": "そういうお前はどうなんだ？",
+    "shortDescription": "自己分析と他者評価を楽しむゲーム",
+    "description": "『そういうお前はどうなんだ？』は、仲間の意外な一面を知り、自分を振り返る心理トーク系ゲームです。",
+    "image": "images/soyu_omae.jpg"
+  },
+  {
+    "id": 6,
+    "name": "ソクラテスラ",
+    "shortDescription": "哲学×科学のカードバトル",
+    "description": "『ソクラテスラ』は、偉人たちの名言や能力を駆使して戦うユニークなバトルカードゲームです。",
+    "image": "images/socratesla.jpg"
+  },
+  {
+    "id": 7,
+    "name": "ワードバスケット",
+    "shortDescription": "言葉のしりとりゲーム",
+    "description": "『ワードバスケット』はしりとりをしながらカードを早く出し切る、テンポ感のあるパーティーゲームです。",
+    "image": "images/word_basket.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Grim Forge",
+    "shortDescription": "ドラフト型カードゲーム",
+    "description": "『Grim Forge』は、7枚から1枚ずつドラフトしていき自分の手札を構築していくドラフトゲームです。",
+    "image": "images/grim_forge.jpg"
+  },
+  {
+    "id": 9,
+    "name": "SCOUT!",
+    "shortDescription": "手札を組み替えて点数を稼ぐゲーム",
+    "description": "『SCOUT!』は手札のカードを並び替えてコンボを作り、より高得点を目指すカードゲームです。",
+    "image": "images/scout.jpg"
+  },
+  {
+    "id": 10,
+    "name": "教祖爆誕",
+    "shortDescription": "奇抜な宗教を作り上げるパーティーゲーム",
+    "description": "『教祖爆誕』は、ユニークな教義や儀式を考えて自分だけの宗教を創造する創作ゲームです。",
+    "image": "images/guru_rising.jpg"
+  },
+  {
+    "id": 11,
+    "name": "ドメモ",
+    "shortDescription": "数字推理ゲーム",
+    "description": "『ドメモ』は相手の手札の数字を推理して正解を目指すシンプルな心理ゲームです。",
+    "image": "images/domemo.jpg"
+  },
+  {
+    "id": 12,
+    "name": "まにまにまじか",
+    "shortDescription": "言葉遊びで盛り上がるゲーム",
+    "description": "『まにまにまじか』は、お題に応じてユニークな言葉を考え出す想像力豊かなカードゲームです。",
+    "image": "images/manimani_majika.jpg"
+  },
+  {
+    "id": 13,
+    "name": "FLUXX",
+    "shortDescription": "ルールが次々変わるゲーム",
+    "description": "『FLUXX』は、プレイ中にルールや目的がどんどん変化する予測不能なカードゲームです。",
+    "image": "images/fluxx.jpg"
+  },
+  {
+    "id": 14,
+    "name": "コヨーテ",
+    "shortDescription": "心理戦と数字推理ゲーム",
+    "description": "『コヨーテ』は、お互いのカードを推理して総数を予想するスリリングなカードゲームです。",
+    "image": "images/coyote.jpg"
+  },
+  {
+    "id": 15,
+    "name": "音速飯店",
+    "shortDescription": "レストラン経営のスピードゲーム",
+    "description": "『音速飯店』は、素早く注文を捌きながら、効率よく売上を上げる経営ゲームです。",
+    "image": "images/onsoku_hanten.jpg"
+  },
+  {
+    "id": 16,
+    "name": "カケルカケルカ",
+    "shortDescription": "数学と戦略の掛け算ゲーム",
+    "description": "『カケルカケルカ』は、カードを掛け合わせて大きな数を作り出す戦略ゲームです。",
+    "image": "images/kakeru_kakeruka.jpg"
+  },
+  {
+    "id": 17,
+    "name": "レロレロ酒場",
+    "shortDescription": "個性的な酒場を盛り上げるゲーム",
+    "description": "『レロレロ酒場』は、ユニークなキャラクターやお酒で酒場を繁盛させるボードゲームです。",
+    "image": "images/rerorero_sakaba.jpg"
+  },
+  {
+    "id": 18,
+    "name": "ニムト",
+    "shortDescription": "シンプルで奥深いカードゲーム",
+    "description": "『ニムト』はカードを選ぶだけの簡単なルールながら、戦略的なプレイが要求されるゲームです。",
+    "image": "images/nimuto.jpg"
+  },
+  {
+    "id": 19,
+    "name": "ダブルナイン",
+    "shortDescription": "数字合わせで勝負するゲーム",
+    "description": "『ダブルナイン』は、自分のカードを他のプレイヤーと組み合わせて得点を稼ぐカードゲームです。",
+    "image": "images/double_nine.jpg"
+  },
+  {
+    "id": 20,
+    "name": "グラフィティ6",
+    "shortDescription": "絵を描いて当ててもらうゲーム",
+    "description": "『グラフィティ6』は、お題に沿って絵を描き、仲間に当ててもらう創作系ゲームです。",
+    "image": "images/graffiti_6.jpg"
+  },
+  {
+    "id": 21,
+    "name": "キャットチョコレート",
+    "shortDescription": "即興で物語を作るゲーム",
+    "description": "『キャットチョコレート』は、お題カードを元に即興でストーリーを作るパーティーゲームです。",
+    "image": "images/cat_chocolate.jpg"
+  },
+  {
+    "id": 22,
+    "name": "ワードスナイパー",
+    "shortDescription": "言葉を探し当てるスピードゲーム",
+    "description": "『ワードスナイパー』は、素早くお題に合う言葉を思いつき、ポイントを稼ぐ競争ゲームです。",
+    "image": "images/word_sniper.jpg"
+  },
+  {
+    "id": 23,
+    "name": "プリズムフラワーズ",
+    "shortDescription": "美しい花を集めるゲーム",
+    "description": "『プリズムフラワーズ』は、色とりどりの花を集めて美しいコレクションを作るゲームです。",
+    "image": "images/prism_flowers.jpg"
+  },
+  {
+    "id": 24,
+    "name": "鳥獣戯画",
+    "shortDescription": "古典的なテーマで遊ぶゲーム",
+    "description": "『鳥獣戯画』は、日本の古典美術をモチーフにした独特のカードゲームです。",
+    "image": "images/choju_giga.jpg"
+  },
+  {
+    "id": 25,
+    "name": "たった今考えたプロポーズの言葉を君に捧ぐよ。",
+    "shortDescription": "即興で愛を表現するゲーム",
+    "description": "『たった今考えたプロポーズの言葉を君に捧ぐよ。』は、即興でプロポーズの言葉を作る創造性が試されるゲームです。",
+    "image": "images/proposal_game.jpg"
+  },
+  {
+    "id": 26,
+    "name": "ito",
+    "shortDescription": "数字で心を合わせるゲーム",
+    "description": "数字カードを使い、仲間と感覚を共有しながら順番にカードを出していく協力型ゲームです。",
+    "image": "images/ito.jpg"
+  },
+  {
+    "id": 27,
+    "name": "狩歌",
+    "shortDescription": "歌詞を聞き取る瞬発力ゲーム",
+    "description": "流れる音楽の歌詞を聞き取り、正しいカードをいち早く取るスピード勝負のゲームです。",
+    "image": "images/karuta.jpg"
+  },
+  {
+    "id": 28,
+    "name": "シノビノギ",
+    "shortDescription": "忍者の暗号を解読するゲーム",
+    "description": "忍者の役割を持ったプレイヤーが暗号を送り合い、味方と協力して任務を達成する推理ゲームです。",
+    "image": "images/shinobinogi.jpg"
+  }
+
+]

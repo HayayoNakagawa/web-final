@@ -1,0 +1,117 @@
+/* ヘッダー */
+header {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+  
+  /* メインコンテンツ */
+  main {
+    padding: 20px;
+  }
+  
+  main .game-list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+  }
+  
+  main .game-card {
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 8px;
+    background: #fff;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  main .game-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  main .game-card h3 {
+    font-size: 1em;
+    margin: 10px 0;
+  }
+  
+  main .game-card p {
+    font-size: 0.8em;
+    color: #555;
+  }
+  
+  /* ポップアップ */
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .popup h2 {
+    margin-top: 0;
+  }
+  
+  .popup p {
+    margin: 10px 0;
+  }
+  
+  .popup .stars {
+    font-size: 1.5rem;
+    color: lightgray;
+  }
+  
+  .popup .stars span {
+    cursor: pointer;
+  }
+  
+  .popup .textarea {
+    width: 100%;
+    height: 60px;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .popup button {
+    margin: 10px 5px 0 0;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .popup button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  .popup .reviews {
+    max-height: 200px; /* スクロール可能 */
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .popup .reviews li {
+    margin-bottom: 10px;
+  }
+  

@@ -191,8 +191,8 @@
   {
     "id": 28,
     "name": "シノビノギ",
-    "shortDescription": "忍者の暗号を解読するゲーム",
-    "description": "忍者の役割を持ったプレイヤーが暗号を送り合い、味方と協力して任務を達成する推理ゲームです。",
+    "shortDescription": "忍術などのカードを使用し巻物を奪い合うカードゲーム",
+    "description": "自分の相棒忍者と一緒に相手のデッキ、手札どこかにある巻物を奪い合うカードゲームです。",
     "image": "images/shinobinogi.jpg"
   }
 
